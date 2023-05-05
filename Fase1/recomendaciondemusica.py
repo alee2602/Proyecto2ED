@@ -25,7 +25,11 @@ def crear_canciones_db(db):
 
 def getemocion():
 
-    emocion="" #Estado de ánimo actual
+    emocion = input("Ingrese su estado de ánimo actual: ") # Pedir al usuario su estado de ánimo actual
+    guardar_emocion_query = f"CREATE (:Emoción {{Nombre: '{emocion}'}})" # Crear un nodo para la emoción ingresada por el usuario
+    with driver.session() as session:
+        session.run(guardar_emocion_query)
+    return emocion
 
     return emocion
 
