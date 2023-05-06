@@ -9,9 +9,9 @@ from neo4j import GraphDataBase
 #Crear la conexión a la base de datos
 
 def connectneo4j():
-    url=""  #Dirección de la base de datos
-    username="" #Usuario para acceder a la base de datos
-    password="" #Contraseña para acceder a la base de datos
+    url="bolt://localhost:7687"  #Dirección de la base de datos
+    username="neo4j" #Usuario para acceder a la base de datos
+    password="songreccomendationdb421" #Contraseña para acceder a la base de datos
     driver= GraphDataBase.driver(url, auth=(username, password))
     return driver
 
