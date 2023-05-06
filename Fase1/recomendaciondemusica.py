@@ -31,8 +31,6 @@ def getemocion():
         session.run(guardar_emocion_query)
     return emocion
 
-    return emocion
-
 #Pedir al usuario sus géneros preferidos
 
 def getgenerospreferidos():
