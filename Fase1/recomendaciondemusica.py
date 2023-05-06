@@ -36,8 +36,14 @@ def getemocion():
 #Pedir al usuario sus géneros preferidos
 
 def getgenerospreferidos():
+    
+    generospreferidos=input("Ingrese sus géneros preferidos separados por comas: ") #Géneros preferidos
 
-    generospreferidos="" #Géneros preferidos
+    #Guardar los géneros preferidos en la base de datos
+    with driver.session() as session:
+        for genero in generospreferidos.split(","):
+            crear_query= f"CREATE (:Género {{Nombre: '{genero.strip()}'}})"
+            session.run(crear_query)
 
     return generospreferidos
 
