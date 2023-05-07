@@ -10,8 +10,8 @@ from neo4j import GraphDataBase
 
 def connectneo4j():
     url="bolt://localhost:7687"  #Dirección de la base de datos
-    username="neo4j" #Usuario para acceder a la base de datos
-    password="songreccomendationdb421" #Contraseña para acceder a la base de datos
+    username="" #Usuario para acceder a la base de datos
+    password="" #Contraseña para acceder a la base de datos
     driver= GraphDataBase.driver(url, auth=(username, password))
     return driver
 
