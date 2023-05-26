@@ -124,6 +124,7 @@ def FiltrarM2(user):
 
     feeling = user.feeling
     songs = []
+    artists = []
 
     if(len(user.genre)>1):
         for g in user.genre:
@@ -137,7 +138,7 @@ def FiltrarM2(user):
         RETURN s
         """
         
-        songs.extend(buscar(query,"SONG"))
+            songs.extend(buscar(query,"SONG"))
     else:
         gen = user.genre[0]
         query = f"""MATCH (s:SONG)-[:ES_DE_GENERO]->(g:GENRE) 
@@ -155,8 +156,16 @@ def FiltrarM2(user):
 
     if songs:
         print("De acuerdo a tus preferencias, te recomendamos las siguientes canciones:")
+        #Buscar artistas
+        
+        #for s in songs:
+        #    artists.append(buscar('MATCH (a:ARTIST)-[:CANTA]->(s:SONG)WHERE s.Title = "'+s+'"RETURN a',"ARTIST"))
+
+
     else:
         print("No hay canciones que coincidan con sus preferencias, intente con otras 😔")
+
+
     for i in songs:
         print("- "+i)
 
@@ -293,5 +302,5 @@ def buscar(query,nodeType):
 #buscar("MATCH (f:FEELING) RETURN f","FEELING")
 #buscar("MATCH (g:GENRE) RETURN g","GENRE")
 
-
+#password = input("Ingrese la contraseña de la Base de Datos")
 menu()
