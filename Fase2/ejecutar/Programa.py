@@ -18,6 +18,7 @@ class Neo4jDatabase:
 def menu():
 
     while True:
+        print("\n\n")
         print("===== MENÚ =====")
         print("¿Qué desea hacer?")
         print("1.Recomiendame canciones")
@@ -105,6 +106,8 @@ def agregar():
            
 
 def Recomendar():
+    canciones = []
+    artistas = []
     nombre = input("Ingresa tu nombre: ")
     
     genre = PedirGeneros()
@@ -117,7 +120,14 @@ def Recomendar():
     # Conexión a la base de datos Neo4j
     
     #FiltrarM1(NuevoUsuario)
-    FiltrarM2(NuevoUsuario)
+    canciones = FiltrarM2(NuevoUsuario)
+    
+    print("\n- - - - - - - - - - - - - - - ")
+    for i in canciones:
+        num = 1
+        print(str(num)+". "+i)
+        num+=1
+        print("- - - - - - - - - - - - - - - ")
     
     
 def FiltrarM2(user):
@@ -158,18 +168,17 @@ def FiltrarM2(user):
         print("De acuerdo a tus preferencias, te recomendamos las siguientes canciones:")
         #Buscar artistas
         
-        #for s in songs:
-        #    artists.append(buscar('MATCH (a:ARTIST)-[:CANTA]->(s:SONG)WHERE s.Title = "'+s+'"RETURN a',"ARTIST"))
+        for s in songs:
+            artists.append(buscar('MATCH (a:ARTIST)-[:CANTA]->(s:SONG)WHERE s.Title = "'+s+'"RETURN a',"ARTIST"))
 
 
     else:
         print("No hay canciones que coincidan con sus preferencias, intente con otras 😔")
 
+    return songs
+    
 
-    for i in songs:
-        print("- "+i)
-
-
+#PRIMER MÉTODO QUE SE INTENTÓ APLICAR, PERO ERA POCO EFECTIVO POR LA ESPERA DE RESPUESTA CON LA BASE DE DATOS
 def FiltrarM1(user):
     generos = user.genre
     feeling = user.feeling
@@ -230,7 +239,7 @@ def PedirFeeling():
     for f in feels:
         print(str(num)+". "+f)
         num+=1
-    print("Ingresa el número de como te quieres sentir:")
+    print("Ingresa el número de como te quieres sentir: ")
     
 
     while True:
@@ -241,7 +250,7 @@ def PedirFeeling():
             break
         else:
             feelingUsuario = feels[int(FeelingNum)-1]
-            print("Te quieres sentir:"+feelingUsuario)
+            print("Te quieres sentir: "+feelingUsuario)
             break
 
         

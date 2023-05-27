@@ -1,2 +1,2 @@
 Fase2
-Archivo Music, abrirlo en VISUAL STUDIO CODE, NO EN EXCEL
+Archivo Music, abrirlo en VISUAL STUDIO CODE, NO EN EXCEL para que no se modifique el formato de separado por comas
